@@ -18,11 +18,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+
+
 public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
 {
 
     Context context;
     List<Movie> movies;
+
 
     public MovieAdaptor(Context context, List<Movie> movies)
     {
@@ -76,12 +81,12 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
             tvDiscription.setText(movie.getOverview());
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             {
-                Glide.with(context).load(movie.getBackdropPath()).into(ivPoster);
+                Glide.with(context).load(movie.getBackdropPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivPoster);
 
             }
             else
             {
-                Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+                Glide.with(context).load(movie.getPosterPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivPoster);
 
             }
         }
