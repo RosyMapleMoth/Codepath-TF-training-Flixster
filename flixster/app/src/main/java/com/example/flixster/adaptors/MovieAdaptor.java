@@ -18,8 +18,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
 
 
 public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
