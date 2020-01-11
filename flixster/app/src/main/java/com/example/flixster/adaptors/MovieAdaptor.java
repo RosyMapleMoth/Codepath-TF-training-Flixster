@@ -56,7 +56,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
         TextView tvTitle;
@@ -87,6 +87,11 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
                 Glide.with(context).load(movie.getPosterPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivPoster);
 
             }
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 
