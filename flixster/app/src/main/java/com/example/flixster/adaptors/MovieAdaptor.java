@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.MovieTrailerActivity;
+import com.example.flixster.PopularMovieDetailsActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
@@ -102,13 +103,26 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
 
             if (position != RecyclerView.NO_POSITION)
             {
+
+
                 Movie movie = movies.get(position);
 
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                if (movie.getVoteAverage() >= 8)
+                {
+                    Intent intent = new Intent(context, PopularMovieDetailsActivity.class);
 
-                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                    intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
 
-                context.startActivity(intent);
+                    context.startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(context, MovieDetailsActivity.class);
+
+                    intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+
+                    context.startActivity(intent);
+                }
             }
         }
     }
