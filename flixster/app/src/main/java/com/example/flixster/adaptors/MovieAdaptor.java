@@ -1,5 +1,7 @@
 package com.example.flixster.adaptors;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.flixster.MainActivity;
 import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.MovieTrailerActivity;
 import com.example.flixster.PopularMovieDetailsActivity;
@@ -21,9 +24,13 @@ import com.example.flixster.models.Movie;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.parceler.Parcels;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 
 public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
@@ -33,7 +40,8 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
     List<Movie> movies;
 
 
-    public MovieAdaptor(Context context, List<Movie> movies)
+
+    public MovieAdaptor(Context context, List<Movie> movies, Activity a)
     {
         this.context = context;
         this.movies = movies;
@@ -70,7 +78,6 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
         ImageView ivPoster;
 
 
-
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -86,12 +93,12 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder>
             tvDiscription.setText(movie.getOverview());
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             {
-                Glide.with(context).load(movie.getBackdropPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivPoster);
+                Glide.with(context).load(movie.getBackdropPath()).placeholder(R.drawable.ic_placeholder_foreground).override(350, 342).centerCrop().transform(new RoundedCornersTransformation(30 , 10)).into(ivPoster);
 
             }
             else
             {
-                Glide.with(context).load(movie.getPosterPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivPoster);
+                Glide.with(context).load(movie.getPosterPath()).placeholder(R.drawable.ic_placeholder_foreground).override(120, 342).centerCrop().transform(new RoundedCornersTransformation(30 , 10)).into(ivPoster);
 
             }
         }

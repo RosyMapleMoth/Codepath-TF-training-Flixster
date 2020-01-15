@@ -59,9 +59,9 @@ public class Movie {
         return movies;
     }
 
-    public String getPosterPath() {
-        return basePath + bestPosterImageSize + posterPath;
-    }
+    public String getPosterPath() { return basePath + bestPosterImageSize + posterPath; }
+
+    public String getPosterPath(String size) { return basePath + size + posterPath; }
 
     public String getTitle() {
         return title;
@@ -78,4 +78,6 @@ public class Movie {
     public String getYouTubeId() { return youTubeId; }
 
     public String getBackdropPath() { return  basePath + bestPosterImageSize + backdropPath; }
+
+    public String getBackdropPath(String size) { return  basePath + size + backdropPath; }
 }

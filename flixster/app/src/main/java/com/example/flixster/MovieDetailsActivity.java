@@ -1,32 +1,36 @@
 package com.example.flixster;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.databinding.DataBindingUtil;
+        import androidx.databinding.ViewDataBinding;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.ImageView;
+        import android.widget.RatingBar;
+        import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.codepath.asynchttpclient.AsyncHttpClient;
-import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.example.flixster.models.Movie;
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
+        import com.bumptech.glide.Glide;
+        import com.codepath.asynchttpclient.AsyncHttpClient;
+        import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+        import com.example.flixster.databinding.ActivityMovieDetailsBinding;
+        import com.example.flixster.models.Movie;
+        import com.google.android.youtube.player.YouTubeBaseActivity;
+        import com.google.android.youtube.player.YouTubeInitializationResult;
+        import com.google.android.youtube.player.YouTubePlayer;
+        import com.google.android.youtube.player.YouTubePlayerView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.parceler.Parcels;
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
+        import org.parceler.Parcels;
 
-import okhttp3.Headers;
+        import okhttp3.Headers;
 
-import static com.facebook.stetho.inspector.network.ResponseHandlingInputStream.TAG;
+        import static com.facebook.stetho.inspector.network.ResponseHandlingInputStream.TAG;
 
 public class MovieDetailsActivity extends YouTubeBaseActivity {
 
@@ -36,6 +40,8 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
     TextView tvTitle, tvOverview;
     RatingBar rbVoteAverage;
     ImageView ivBackDrop;
+    private ActivityMovieDetailsBinding binding;
+
 
 
 
@@ -49,14 +55,16 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         Log.d("MovieDetailsActivity", String.format("Starting Detail activity for '%s'", movie.getTitle()));
 
 
-        tvTitle = findViewById(R.id.tvTitle);
-        tvOverview = findViewById(R.id.tvOverview);
-        rbVoteAverage = findViewById(R.id.rbVoteAverage);
-        ivBackDrop = findViewById(R.id.ivBackdrop);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
+
+        tvTitle = binding.tvTitle;
+        tvOverview = binding.tvOverview;
+        rbVoteAverage = binding.rbVoteAverage;
+        ivBackDrop = binding.ivBackdrop;
 
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
-        Glide.with(this).load(movie.getBackdropPath()).placeholder(R.drawable.ic_placeholder_foreground).into(ivBackDrop);
+        Glide.with(this).load(movie.getBackdropPath("w1280")).placeholder(R.drawable.ic_placeholder_foreground).into(ivBackDrop);
 
 
         ivBackDrop.setOnClickListener(new View.OnClickListener() {

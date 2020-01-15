@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- change the name of this file to APIKeys.xml and fill in the string values with your API keys to use this app -->
+    <string name="YoutubeKey">Youtube API key goes here</string>
+    <string name="MovieDbKey">Movie data base API key goes here</string>
+</resources>
