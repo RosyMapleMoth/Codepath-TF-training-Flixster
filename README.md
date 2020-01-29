@@ -23,7 +23,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 ### App Walkthough GIF
 
 TODO add img
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="https://i.imgur.com/ao0fLqg.mp4" width=250><br>
 
 ### Notes
 I had a great deal of trouble when attempting the follow the guide on shaired element transitions, to the point that i gave up on it temporaraly I hope to attmept it at a later date, other then that i had a few issues understanding how to get activitys and contexts to the adaptor class, however this issue was fairly easy to overcome.
